@@ -48,6 +48,7 @@ public class MainObject : MonoBehaviour
         for(int i = 0; i < dataFlowTextBoxs.Length; i++){
             updateTextBox(dataFlowTextBoxs[i], "");
         }
+        Cursor.visible =false;
     }
 
     // Update is called once per frame
