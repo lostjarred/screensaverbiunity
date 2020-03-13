@@ -6,12 +6,31 @@ class Time{
             DateTime datetime = DateTime.Now;
             return datetime;
         }
-        public static string Gettime(DateTime datetime){
-            int hour = GetHour(datetime);
-            int minute = GetMinute(datetime);
-            int milisecond = GetSecond(datetime);
+        public static string Gettime(DateTime datetime){ 
+            int inthour = GetHour(datetime);
+            int intminute = GetMinute(datetime);
+            int intsecond = GetSecond(datetime);
+            string hour;
+            string minute;
+            string Second;
+            
+            if(inthour > 9){
+                hour = inthour.ToString();
+            }else{
+                hour = "0" + inthour.ToString();
+            }
+            if(intminute > 9){
+                minute = intminute.ToString();
+            }else{
+                minute = "0" + intminute.ToString();
+            }
+            if(intsecond > 9){
+                Second = intsecond.ToString();
+            }else{
+                Second = "0" + intsecond.ToString();
+            }
 
-            string returnstring = hour.ToString() + ":" + minute.ToString() + ":" + milisecond.ToString();
+            string returnstring = hour + ":" + minute + ":" + Second;
             return returnstring;
         }
 
