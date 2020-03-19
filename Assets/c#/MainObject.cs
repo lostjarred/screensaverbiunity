@@ -34,7 +34,7 @@ public class MainObject : MonoBehaviour
                 textoutput = screensaver.Converters.convertStringBineary(stringchunk);
                 for(int i = 0; i < Stringchunkgenerator.Getrandomnumber(0,5); i ++){
                     stringchunk = Stringchunkgenerator.GetCharacterChunk(Stringchunkgenerator.GetCharacterString(), Stringchunkgenerator.Getrandomnumber(1, 7));
-                    textoutput = textoutput + " " + screensaver.Converters.convertStringBineary(stringchunk);
+                    textoutput = textoutput + "   " + screensaver.Converters.convertStringBineary(stringchunk);
                 }
                 updateTextBox(dataFlowTextBoxs[curtxtbox], textoutput);
             curtxtbox = curtxtbox + 1;
