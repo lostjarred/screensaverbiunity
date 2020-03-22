@@ -12,27 +12,20 @@ public class TextboxSlowTypeinEffect : MonoBehaviour
     float delaytime = 0.1f;
 
     public bool Getcomplete(){
-        string curstringtextbox = getTextBoxText(self);
+        string curstringtextbox = TextboxUtils.getTextBoxText(self);
         if (curstringtextbox.Length < defaulttextboxstring.Length){
             return true;
         }else{
             return false;
         }
     }
-    public string getTextBoxText(GameObject gameObject){
-        return gameObject.GetComponent<Text>().text;
-    }
-
-    public void updateTextBox(GameObject gameObject, string texttoupdate){
-        gameObject.GetComponent<Text>().text=texttoupdate;
-    }
 
     public void slowtypetexteffect(){
-        string curstringtextbox = getTextBoxText(self);
+        string curstringtextbox = TextboxUtils.getTextBoxText(self);
         if (curstringtextbox.Length < defaulttextboxstring.Length){
             curstringtextbox = curstringtextbox + defaulttextboxstring[curchar];
             curchar = curchar + 1;
-            updateTextBox(self, curstringtextbox);
+            TextboxUtils.updateTextBox(self, curstringtextbox);
         }
         
     }
@@ -40,8 +33,8 @@ public class TextboxSlowTypeinEffect : MonoBehaviour
     void Start()
     {
         self = gameObject;
-        defaulttextboxstring = getTextBoxText(self);
-        updateTextBox(self, "");
+        defaulttextboxstring = TextboxUtils.getTextBoxText(self);
+        TextboxUtils.updateTextBox(self, "");
         eventTime = Time.deltaTime + delaytime;
     }
 

@@ -23,9 +23,7 @@ public class BGMGameObjectScript : MonoBehaviour
         self.GetComponent<AudioSource>().volume = musicvolume;
     }
 
-    public void updateTextBox(GameObject gameObject, string texttoupdate){
-        gameObject.GetComponent<Text>().text=texttoupdate;
-    }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +41,6 @@ public class BGMGameObjectScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.KeypadMinus) && getmusicvolume() > 0.0f){
             setmusicvolume(getmusicvolume() - modifyvolumeammount);
         }
-        updateTextBox(volumetextbox, getvolumepercent(getmusicvolume()).ToString() +"%");
+        TextboxUtils.updateTextBox(volumetextbox, getvolumepercent(getmusicvolume()).ToString() +"%");
     }
 }

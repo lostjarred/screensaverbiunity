@@ -18,14 +18,6 @@ public class MainObject : MonoBehaviour
     float delaytime = 0.05f;
 
     TextboxSlowTypeinEffect textboxSlowTypeinEffect;
-    
-    public void updateTextBox(GameObject gameObject, string texttoupdate){
-        gameObject.GetComponent<Text>().text=texttoupdate;
-    }
-    
-    public string getTextBoxText(GameObject gameObject){
-        return gameObject.GetComponent<Text>().text;
-    }
 
     public void UpdateDataFlowTextBoxs(){
         if(curtxtbox < dataFlowTextBoxs.Length){
@@ -36,7 +28,7 @@ public class MainObject : MonoBehaviour
                     stringchunk = Stringchunkgenerator.GetCharacterChunk(Stringchunkgenerator.GetCharacterString(), Stringchunkgenerator.Getrandomnumber(1, 7));
                     textoutput = textoutput + "   " + screensaver.Converters.convertStringBineary(stringchunk);
                 }
-                updateTextBox(dataFlowTextBoxs[curtxtbox], textoutput);
+                TextboxUtils.updateTextBox(dataFlowTextBoxs[curtxtbox], textoutput);
             curtxtbox = curtxtbox + 1;
         }else{
             curtxtbox = 0;
@@ -46,7 +38,7 @@ public class MainObject : MonoBehaviour
     {   
         eventTime = UnityEngine.Time.deltaTime + delaytime;
         for(int i = 0; i < dataFlowTextBoxs.Length; i++){
-            updateTextBox(dataFlowTextBoxs[i], "");
+            TextboxUtils.updateTextBox(dataFlowTextBoxs[i], "");
         }
         Cursor.visible =false;
     }
@@ -55,13 +47,13 @@ public class MainObject : MonoBehaviour
     void Update()
     {
         textoutput = screensaver.Time.Gettime(screensaver.Time.GetDateTime());
-        updateTextBox(timeTextboxs[0], textoutput);
+        TextboxUtils.updateTextBox(timeTextboxs[0], textoutput);
 
         textoutput = screensaver.Converters.convertIntBineary(screensaver.Time.GetHour(screensaver.Time.GetDateTime())) + " " + screensaver.Converters.convertIntBineary(screensaver.Time.GetMinute(screensaver.Time.GetDateTime())) + " " + screensaver.Converters.convertIntBineary(screensaver.Time.GetSecond(screensaver.Time.GetDateTime()));
-        updateTextBox(timeTextboxs[1], textoutput);
+        TextboxUtils.updateTextBox(timeTextboxs[1], textoutput);
 
         textoutput = screensaver.Converters.convertIntHex(screensaver.Time.GetHour(screensaver.Time.GetDateTime())) + " " + screensaver.Converters.convertIntHex(screensaver.Time.GetMinute(screensaver.Time.GetDateTime())) + " " + screensaver.Converters.convertIntHex(screensaver.Time.GetSecond(screensaver.Time.GetDateTime()));
-        updateTextBox(timeTextboxs[2], textoutput);
+        TextboxUtils.updateTextBox(timeTextboxs[2], textoutput);
         
         if (usertextbox.GetComponent<TextboxSlowTypeinEffect>().Getcomplete() == false){
             if (UnityEngine.Time.time >= eventTime){
