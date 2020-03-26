@@ -23,7 +23,24 @@ public class BGMGameObjectScript : MonoBehaviour
         self.GetComponent<AudioSource>().volume = musicvolume;
     }
 
-    
+    public string volumeBar(int percentbarlength, int percentfull, string emptychar, string fullchar){
+        
+        float percent = (percentfull / 100.0F);
+        int numoffullchars = (int)(percent * percentbarlength);
+        string outputstring = "";
+        print(percent.ToString());
+        print(percentfull.ToString());
+        print(numoffullchars.ToString());
+        for(int i = 0; i < percentbarlength; i ++){
+            if(numoffullchars > 0){
+                outputstring = outputstring + fullchar;
+                numoffullchars = numoffullchars - 1;
+            }else{
+                outputstring = outputstring + emptychar;
+            }
+        }    
+        return outputstring;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +58,6 @@ public class BGMGameObjectScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.KeypadMinus) && getmusicvolume() > 0.0f){
             setmusicvolume(getmusicvolume() - modifyvolumeammount);
         }
-        TextboxUtils.updateTextBox(volumetextbox, getvolumepercent(getmusicvolume()).ToString() +"%");
+        TextboxUtils.updateTextBox(volumetextbox, "[" + volumeBar(30, getvolumepercent(getmusicvolume()), "-", "=") + "]" + getvolumepercent(getmusicvolume()).ToString() +"%");
     }
 }
