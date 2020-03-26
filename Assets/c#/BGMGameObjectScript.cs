@@ -28,9 +28,6 @@ public class BGMGameObjectScript : MonoBehaviour
         float percent = (percentfull / 100.0F);
         int numoffullchars = (int)(percent * percentbarlength);
         string outputstring = "";
-        print(percent.ToString());
-        print(percentfull.ToString());
-        print(numoffullchars.ToString());
         for(int i = 0; i < percentbarlength; i ++){
             if(numoffullchars > 0){
                 outputstring = outputstring + fullchar;
